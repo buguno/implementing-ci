@@ -1,5 +1,6 @@
-from pydantic import BaseModel
 from time import time
+
+from pydantic import BaseModel
 
 
 class CarParams(BaseModel):
@@ -13,6 +14,10 @@ class CarResponse(BaseModel):
     model: str
     plate: str
     timestamp: int
+
+
+class GetAllCars(BaseModel):
+    cars: list[CarResponse]
 
 
 class CarService():
@@ -30,3 +35,5 @@ class CarService():
         self.cars.append(new_car.__dict__)
         return new_car
 
+    def get_all_cars(self) -> GetAllCars:
+        return GetAllCars(cars=self.cars)
