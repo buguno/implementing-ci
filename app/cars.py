@@ -37,3 +37,6 @@ class CarService():
 
     def get_all_cars(self) -> GetAllCars:
         return GetAllCars(cars=self.cars)
+
+    def reset_cars(self) -> None:
+        self.cars = []
